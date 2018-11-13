@@ -63,7 +63,6 @@ public class AmplifyEffect : MonoBehaviour, IAmplifyEffect
 
 	private IEnumerator GraduallyAmplifyEffect()
 	{
-		Debug.Log("Coro1");
 		var _emission = particle.emission;
 
 		// パーティクルの1秒あたりの量の変更
@@ -81,7 +80,6 @@ public class AmplifyEffect : MonoBehaviour, IAmplifyEffect
 	}
 	private IEnumerator EffectScaleChenge()
 	{
-		Debug.Log("Coro2");
 		for(float f = 0.0f; f <= 0.3f; f += 0.05f)
 		{
 			effectScale.transform.localScale = new Vector3(f, f, f);

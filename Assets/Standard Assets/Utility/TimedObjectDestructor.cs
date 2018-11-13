@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace UnityStandardAssets.Utility
 {
@@ -21,7 +22,8 @@ namespace UnityStandardAssets.Utility
             {
                 transform.DetachChildren();
             }
-            DestroyObject(gameObject);
+            //DestroyObject(gameObject);
+            Object.Destroy(gameObject);
         }
     }
 }
