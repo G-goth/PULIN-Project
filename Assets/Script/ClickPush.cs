@@ -17,7 +17,6 @@ public class ClickPush : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		// targetObj = GameObject.Find("ParticleSphere");
 	}
 	
 	// Update is called once per frame
