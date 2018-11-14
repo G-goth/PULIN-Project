@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PULIN Scene2.unity
     guid: b3294e1cb734f7542b4bc459aa071333
+  - enabled: 1
+    path: Assets/Scenes/TheMatrixEffectScene.unity
+    guid: de1c50159c781d64d84b747f4ceb3042
   m_configObjects: {}
