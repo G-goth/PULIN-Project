@@ -3,12 +3,20 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Linq;
 
+[RequireComponent(typeof(Text))]
 public class VerticalText : UIBehaviour, IMeshModifier
 {
+	private Text textComponet;
+	private char[] characters;
+	[SerializeField]
+	private List<char> nonrotatableCharacters;
+
 	public new void OnValidate()
 	{
 		base.OnValidate();
+		textComponet = this.GetComponent<Text>();
 
 		var graphics = base.GetComponent<Graphic>();
 		if(graphics != null)
@@ -39,8 +47,20 @@ public class VerticalText : UIBehaviour, IMeshModifier
 
 	private void ModifyVertices(List<UIVertex> vertexList)
 	{
+		characters = textComponet.text.ToCharArray();
+		if(characters.Length == 0)
+		{
+			return;
+		}
+
 		for(int i = 0, vertexListCount = vertexList.Count; i < vertexList.Count; i += 6)
 		{
+			int index = i / 6;
+			if(IsNonrotatableCharacter(characters[index]))
+			{
+				continue;
+			}
+
 			var center = Vector2.Lerp(vertexList[i].position, vertexList[i + 3].position, 0.5f);
 			for(int r = 0; r < 6; ++r)
 			{
@@ -55,5 +75,10 @@ public class VerticalText : UIBehaviour, IMeshModifier
 				vertexList[i + r] = elemet;
 			}
 		}
+	}
+
+	private bool IsNonrotatableCharacter(char character)
+	{
+		return nonrotatableCharacters.Any(x => x == character);
 	}
 }
